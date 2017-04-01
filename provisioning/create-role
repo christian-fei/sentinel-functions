@@ -2,11 +2,11 @@
 'use strict'
 
 const {run} = require('./tasks/create-role')
-const roleName = process.env.ROLE_NAME || 'sentinel-role'
+const {roleName} = require('./config')
 
 run({roleName})
 .then(data => {
-  console.log(`successfully created role: "${roleName}"\n${JSON.stringify(data)}`)
+  console.log(`successfully created role: "${roleName}"`)
   console.log(`arn: \n\t${data.Role.Arn}`)
 })
 .catch(err => console.error(`failed to create role: "${roleName}"\n${err.stack}`))

@@ -6,7 +6,7 @@ module.exports = {
 const {S3} = require('aws-sdk')
 
 function run (options = {}) {
-  if (!options.bucketName) throw new Error('create-bucket: Please provide a options.bucketName')
+  if (!options.bucketName) throw new Error('delete-bucket: Please provide a options.bucketName')
 
   const {bucketName} = options
   const s3 = new S3({})

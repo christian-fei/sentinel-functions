@@ -5,7 +5,9 @@ module.exports = {
 
 const {readFileSync} = require('fs')
 const {join} = require('path')
-const {IAM} = require('aws-sdk')
+const AWS = require('aws-sdk')
+AWS.config.update({region: 'eu-west-1'})
+const {IAM} = AWS
 
 function run (options = {}) {
   if (!options.roleName) throw new Error('create-role: Please provide a options.roleName')

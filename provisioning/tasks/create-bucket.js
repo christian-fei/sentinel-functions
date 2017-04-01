@@ -3,7 +3,9 @@ module.exports = {
   run
 }
 
-const {S3} = require('aws-sdk')
+const AWS = require('aws-sdk')
+AWS.config.update({region: 'eu-west-1'})
+const {S3} = AWS
 
 function run (options = {}) {
   if (!options.bucketName) throw new Error('create-bucket: Please provide a options.bucketName')

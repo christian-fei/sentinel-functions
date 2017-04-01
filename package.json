@@ -4,7 +4,8 @@
   "description": "> functions used by [sentinel-dashboard](https://github.com/christian-fei/sentinel-dashboard)",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "package:code": "zip provisioning/bucket/sentinel-code.js.zip -j provisioning/bucket/*"
   },
   "repository": {
     "type": "git",

@@ -2,7 +2,8 @@
 'use strict'
 
 const {run} = require('./tasks/delete-bucket')
-const bucketName = process.env.BUCKET_NAME || 'sentinel-bucket'
+const {bucketName} = require('./config')
+
 
 run({bucketName})
 .then(() => console.log(`successfully deleted bucket: "${bucketName}"`))

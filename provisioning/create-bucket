@@ -2,7 +2,8 @@
 'use strict'
 
 const {run} = require('./tasks/create-bucket')
-const bucketName = process.env.BUCKET_NAME || 'sentinel-bucket'
+const {bucketName} = require('./config')
+
 
 run({bucketName})
 .then(() => console.log(`successfully created bucket: "${bucketName}"`))

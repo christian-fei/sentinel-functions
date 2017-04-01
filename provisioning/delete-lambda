@@ -1,0 +1,9 @@
+#!/usr/bin/env node
+'use strict'
+
+const {run} = require('./tasks/delete-lambda')
+const {lambdaName, bucketName} = require('./config')
+
+run({lambdaName, bucketName})
+.then(() => console.log(`successfully deleted lambda: "${lambdaName}"`))
+.catch(err => console.error(`failed to delete lambda: "${lambdaName}"\n${err.stack}`))
