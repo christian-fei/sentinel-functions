@@ -1,0 +1,9 @@
+#!/usr/bin/env node
+'use strict'
+
+const {run} = require('./tasks/create-bucket')
+const bucketName = process.env.BUCKET_NAME || 'sentinel-bucket'
+
+run({bucketName})
+.then(() => console.log(`successfully created bucket: "${bucketName}"`))
+.catch(err => console.error(`failed to create bucket: "${bucketName}"\n${err.stack}`))

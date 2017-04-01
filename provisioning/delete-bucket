@@ -1,0 +1,9 @@
+#!/usr/bin/env node
+'use strict'
+
+const {run} = require('./tasks/delete-bucket')
+const bucketName = process.env.BUCKET_NAME || 'sentinel-bucket'
+
+run({bucketName})
+.then(() => console.log(`successfully deleted bucket: "${bucketName}"`))
+.catch(err => console.error(`failed to delete bucket: "${bucketName}"\n${err.stack}`))

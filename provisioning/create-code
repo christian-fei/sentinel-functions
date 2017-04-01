@@ -1,0 +1,10 @@
+#!/usr/bin/env node
+'use strict'
+
+const {run} = require('./tasks/create-code')
+const bucketName = process.env.BUCKET_NAME || 'sentinel-bucket'
+const objectKey = process.env.OBJECT_KEY || 'sentinel-code.js'
+
+run({bucketName, objectKey})
+.then(() => console.log(`successfully created code in bucket: "${bucketName}"`))
+.catch(err => console.error(`failed to create code in bucket: "${bucketName}"\n${err.stack}`))
