@@ -5,35 +5,17 @@
 
 # Installation
 
-## create iam role
+Configure the `bucketName` in `config.js` and run:
 
 ```
-ROLE_NAME=YOUR_ROLE_NAME provisioning/create-role
+npm run stack:create
 ```
 
-## create bucket
-
-```
-BUCKET_NAME=YOUR_BUCKET_NAME provisioning/create-bucket
-```
-
-## create code
-
-
-```
-BUCKET_NAME=YOUR_BUCKET_NAME provisioning/create-code
-```
+# Sentinel
 
 Creates the code for the [sentinel](#what-is-a-sentinel).
 
 This function is scheduled to make an http request to an endpoint at a specific time interval.
-
-## create lambda
-
-```
-LAMBDA_NAME=YOUR_LAMBDA_NAME provisioning/create-lambda
-```
-
 
 # Workers
 
