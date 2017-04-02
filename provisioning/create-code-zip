@@ -1,8 +1,7 @@
 #!/usr/bin/env node
 
 const {run} = require('../lib/tasks/code/create-zip')
-const {objectKey} = require('../config')
 
-run({objectKey})
-.then(() => console.log(`successfully created code zip: "${objectKey}"`))
-.catch(err => console.error(`failed to create code zip: "${objectKey}"\n${err.message}`))
+run({})
+.then(() => console.log(`successfully created code zip`))
+.catch(err => console.error(`failed to create code zip:"\n${err.message}`))

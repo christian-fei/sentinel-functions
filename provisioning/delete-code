@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
 const {run} = require('../lib/tasks/code/delete')
-const {bucketName, objectKey} = require('../config')
+const {bucketName} = require('../config')
 const {success, failure} = require('../lib/utils/command-logger')
 
-run({bucketName, objectKey})
+run({bucketName})
 .then(() => success(`-> deleted code`))
-.catch(err => failure(`-> failed to delete code: "${bucketName}/${objectKey}"\n${err.message}`))
+.catch(err => failure(`-> failed to delete code: "${bucketName}/sentinel.zip"\n${err.message}`))

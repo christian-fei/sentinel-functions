@@ -11,6 +11,23 @@ Configure the `bucketName` in `config.js` and run:
 npm run stack:create
 ```
 
+It takes about **15 seconds** to setup (with AWS account configured):
+
+```
+~/D/p/sentinel-functions (master ⚡) time npm run stack:create
+
+> sentinel-functions@1.0.0 stack:create /Users/saiph/Documents/projects/sentinel-functions
+> provisioning/create-stack
+
+-> created bucket
+-> created code zip
+-> created code
+-> created role
+-> using arn arn:aws:iam::518086975627:role/sentinel-role
+-> successfully created stack!
+       13.79 real         0.91 user         0.10 sys
+```
+
 # Sentinel
 
 Creates the code for the [sentinel](#what-is-a-sentinel).
