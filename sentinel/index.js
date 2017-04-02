@@ -1,1 +1,5 @@
-exports.handler = (event, context, callback) => callback(null, event)
+const lambda = require('./lambda')
+
+exports.handler = (event, context, callback) => {
+  lambda(event, callback)
+}

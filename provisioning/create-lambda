@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 const {run} = require('../lib/tasks/lambda/create')
-const {lambdaName, bucketName, roleName} = process.env.OBJECT_KEY || 'sentinel-code.js.zip'
+const {lambdaName, bucketName, roleName} = require('../config')
 const {success, failure} = require('../lib/utils/command-logger')
 
 run({lambdaName, bucketName, roleName})
