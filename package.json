@@ -5,7 +5,6 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "package:code": "zip sentinel-code.js.zip sentinel-code.js",
     "stack:create": "provisioning/create-stack",
     "stack:delete": "provisioning/delete-stack",
     "lint": "standard"
