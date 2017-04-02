@@ -1,12 +1,12 @@
 #!/usr/bin/env node
-'use strict'
 
-const {run} = require('./tasks/create-role')
-const {roleName} = require('./config')
+const {run} = require('../lib/tasks/create-role')
+const {roleName} = require('../config')
+const {success, failure} = require('../lib/utils/command-logger')
 
 run({roleName})
 .then(data => {
-  console.log(`successfully created role: "${roleName}"`)
-  console.log(`arn: \n\t${data.Role.Arn}`)
+  success(`-> successfully created role: "${roleName}"`)
+  success(`-> arn: \n\t${data.Role.Arn}`)
 })
-.catch(err => console.error(`failed to create role: "${roleName}"\n${err.stack}`))
+.catch(err => failure(`-> failed to create role: "${roleName}"\n${err.message}`))

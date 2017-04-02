@@ -1,12 +1,12 @@
 #!/usr/bin/env node
-'use strict'
 
-const {run} = require('./tasks/create-lambda')
+const {run} = require('../lib/tasks/create-lambda')
 const lambdaName = process.env.LAMBDA_NAME || 'sentinel-lambda'
 const bucketName = process.env.BUCKET_NAME || 'sentinel-bucket'
 const roleName = process.env.ROLE_NAME || 'sentinel-role'
 const objectKey = process.env.OBJECT_KEY || 'sentinel-code.js.zip'
+const {success, failure} = require('../lib/utils/command-logger')
 
 run({lambdaName, bucketName, roleName, objectKey})
-.then(() => console.log(`successfully created lambda: "${lambdaName}"`))
-.catch(err => console.error(`failed to create lambda: "${lambdaName}"\n${err.stack}`))
+.then(() => success(`-> successfully created lambda: "${lambdaName}"`))
+.catch(err => failure(`-> failed to create lambda: "${lambdaName}"\n${err.message}`))

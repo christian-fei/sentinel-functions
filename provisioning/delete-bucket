@@ -1,10 +1,9 @@
 #!/usr/bin/env node
-'use strict'
 
-const {run} = require('./tasks/delete-bucket')
-const {bucketName} = require('./config')
-
+const {run} = require('../lib/tasks/delete-bucket')
+const {bucketName} = require('../config')
+const {success, failure} = require('../lib/utils/command-logger')
 
 run({bucketName})
-.then(() => console.log(`successfully deleted bucket: "${bucketName}"`))
-.catch(err => console.error(`failed to delete bucket: "${bucketName}"\n${err.stack}`))
+.then(() => success(`-> successfully deleted bucket: "${bucketName}"`))
+.catch(err => failure(`-> failed to delete bucket: "${bucketName}"\n${err.message}`))

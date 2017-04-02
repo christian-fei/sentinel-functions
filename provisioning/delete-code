@@ -1,9 +1,9 @@
 #!/usr/bin/env node
-'use strict'
 
-const {run} = require('./tasks/delete-code')
-const {bucketName, objectKey} = require('./config')
+const {run} = require('../lib/tasks/delete-code')
+const {bucketName, objectKey} = require('../config')
+const {success, failure} = require('../lib/utils/command-logger')
 
 run({bucketName, objectKey})
-.then(() => console.log(`successfully deleted code: "${bucketName}/${objectKey}"`))
-.catch(err => console.error(`failed to delete code: "${bucketName}/${objectKey}"\n${err.stack}`))
+.then(() => success(`-> deleted code`))
+.catch(err => failure(`-> failed to delete code: "${bucketName}/${objectKey}"\n${err.message}`))

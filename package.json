@@ -5,7 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "package:code": "zip provisioning/bucket/sentinel-code.js.zip -j provisioning/bucket/*"
+    "package:code": "zip sentinel-code.js.zip sentinel-code.js",
+    "stack:create": "provisioning/create-stack",
+    "stack:delete": "provisioning/delete-stack",
+    "lint": "standard"
   },
   "repository": {
     "type": "git",
@@ -19,6 +22,7 @@
   },
   "homepage": "https://github.com/christian-fei/sentinel-functions#readme",
   "dependencies": {
+    "archiver": "^1.3.0",
     "aws-sdk": "^2.36.0"
   }
 }

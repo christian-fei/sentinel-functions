@@ -1,10 +1,9 @@
 #!/usr/bin/env node
-'use strict'
 
-const {run} = require('./tasks/create-bucket')
-const {bucketName} = require('./config')
-
+const {run} = require('../lib/tasks/create-bucket')
+const {bucketName} = require('../config')
+const {success, failure} = require('../lib/utils/command-logger')
 
 run({bucketName})
-.then(() => console.log(`successfully created bucket: "${bucketName}"`))
-.catch(err => console.error(`failed to create bucket: "${bucketName}"\n${err.stack}`))
+.then(() => success(`-> successfully created bucket: "${bucketName}"`))
+.catch(err => failure(`-> failed to create bucket: "${bucketName}"\n${err.message}`))

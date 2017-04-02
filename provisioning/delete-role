@@ -1,9 +1,9 @@
 #!/usr/bin/env node
-'use strict'
 
-const {run} = require('./tasks/delete-role')
+const {run} = require('../lib/tasks/delete-role')
 const roleName = process.env.ROLE_NAME || 'sentinel-role'
+const {success, failure} = require('../lib/utils/command-logger')
 
 run({roleName})
-.then(data => console.log(`successfully deleted role: "${roleName}"`))
-.catch(err => console.error(`failed to delete role: "${roleName}"\n${err.stack}`))
+.then(data => success(`-> successfully deleted role: "${roleName}"`))
+.catch(err => failure(`-> failed to delete role: "${roleName}"\n${err.message}`))
