@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-const {run} = require('../lib/tasks/create-code')
+const {run} = require('../lib/tasks/code/create')
 const {bucketName, objectKey} = require('../config')
 const {success, failure} = require('../lib/utils/command-logger')
 

@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-const {run} = require('../lib/tasks/delete-stack')
+const {run} = require('../lib/tasks/stack/delete')
 const options = require('../config')
 const {success, failure} = require('../lib/utils/command-logger')
 

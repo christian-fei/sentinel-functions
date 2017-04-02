@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-const {run} = require('../lib/tasks/create-lambda')
+const {run} = require('../lib/tasks/lambda/create')
 const lambdaName = process.env.LAMBDA_NAME || 'sentinel-lambda'
 const bucketName = process.env.BUCKET_NAME || 'sentinel-bucket'
 const roleName = process.env.ROLE_NAME || 'sentinel-role'

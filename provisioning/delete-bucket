@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-const {run} = require('../lib/tasks/delete-bucket')
+const {run} = require('../lib/tasks/bucket/delete')
 const {bucketName} = require('../config')
 const {success, failure} = require('../lib/utils/command-logger')
 

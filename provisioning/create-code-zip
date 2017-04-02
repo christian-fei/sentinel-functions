@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-const {run} = require('../lib/tasks/create-code-zip')
+const {run} = require('../lib/tasks/code/create-zip')
 const {objectKey} = require('../config')
 
 run({objectKey})

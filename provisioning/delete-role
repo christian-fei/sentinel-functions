@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-const {run} = require('../lib/tasks/delete-role')
+const {run} = require('../lib/tasks/role/delete')
 const roleName = process.env.ROLE_NAME || 'sentinel-role'
 const {success, failure} = require('../lib/utils/command-logger')
 
