@@ -4,7 +4,7 @@
   "description": "> functions used by [sentinel-dashboard](https://github.com/christian-fei/sentinel-dashboard)",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "m.test",
     "stack:create": "provisioning/create-stack",
     "stack:delete": "provisioning/delete-stack",
     "lint": "standard"
@@ -25,6 +25,10 @@
     "p-retry": "^1.0.0"
   },
   "devDependencies": {
+    "m.test": "0.0.54",
     "standard": "^9.0.2"
+  },
+  "standard": {
+    "globals": ["test", "beforeEach", "afterEach"]
   }
 }
