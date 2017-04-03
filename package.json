@@ -22,6 +22,7 @@
   "homepage": "https://github.com/christian-fei/sentinel-functions#readme",
   "dependencies": {
     "aws-sdk": "^2.36.0",
+    "delay": "^2.0.0",
     "p-retry": "^1.0.0"
   },
   "devDependencies": {
@@ -29,6 +30,10 @@
     "standard": "^9.0.2"
   },
   "standard": {
-    "globals": ["test", "beforeEach", "afterEach"]
+    "globals": [
+      "test",
+      "beforeEach",
+      "afterEach"
+    ]
   }
 }
