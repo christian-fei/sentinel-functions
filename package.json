@@ -4,6 +4,7 @@
   "description": "> functions used by [sentinel-dashboard](https://github.com/christian-fei/sentinel-dashboard)",
   "main": "index.js",
   "scripts": {
+    "pretest": "npm run lint",
     "test": "m.test",
     "stack:create": "provisioning/create-stack",
     "stack:delete": "provisioning/delete-stack",
