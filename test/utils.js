@@ -1,6 +1,8 @@
 exports.bucketExists = bucketExists
 exports.codeExists = codeExists
+exports.not = not
 
+const retry = require('p-retry')
 const AWS = require('aws-sdk')
 AWS.config.update({region: 'eu-west-1'})
 const {S3} = AWS
@@ -10,7 +12,7 @@ function bucketExists (options) {
   var params = {
     Bucket: options.bucketName
   }
-  return s3.headBucket(params).promise()
+  return retry(() => s3.headBucket(params).promise(), {retries: 3})
   .then(() => true)
   .catch(() => false)
 }
@@ -18,9 +20,13 @@ function bucketExists (options) {
 function codeExists (options) {
   var params = {
     Bucket: options.bucketName,
-    Key: 'sentinel.zip'
+    Key: options.zipFileName
   }
-  return s3.headObject(params).promise()
+  return retry(() => s3.headObject(params).promise(), {retries: 3})
   .then(() => true)
   .catch(() => false)
+}
+
+function not (promise) {
+  return () => promise.then(bool => !bool)
 }
