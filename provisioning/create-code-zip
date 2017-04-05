@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 
-const {run} = require('../lib/tasks/code/create-zip')
-
-run({})
+const config = require('../config')
+Code.createZip(config)
 .then(() => console.log(`successfully created code zip`))
 .catch(err => console.error(`failed to create code zip:"\n${err.message}`))

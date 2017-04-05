@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
-const {run} = require('../lib/tasks/code/create')
+const Bucket = require('../lib/code')
 const {bucketName} = require('../config')
 const {success, failure} = require('../lib/utils/command-logger')
 
-run({bucketName})
+Bucket.create({bucketName})
 .then(() => success(`-> successfully created code in bucket: "${bucketName}"`))
 .catch(err => failure(`-> failed to create code in bucket: "${bucketName}"\n${err.message}`))
