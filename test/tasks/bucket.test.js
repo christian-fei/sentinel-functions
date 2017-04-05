@@ -1,8 +1,7 @@
-const {ok} = require('assert')
-const config = testConfigFrom(require('../../config'))
+const {ok, throws} = require('assert')
 const createBucket = require('../../lib/tasks/bucket/create')
 const deleteBucket = require('../../lib/tasks/bucket/delete')
-const {bucketExists, not} = require('../utils')
+const {bucketExists, not, config} = require('../utils')
 
 test('bucket', () => {
   test.timeout('creates and deletes bucket', (done) => {
@@ -16,6 +15,13 @@ test('bucket', () => {
     .then(() => done())
     .catch(done)
   }, 30000)
+
+  test('.createBucket throws when bucketName is missing', () => {
+    throws(() => createBucket.run({}))
+  })
+  test('.deleteBucket throws when bucketName is missing', () => {
+    throws(() => deleteBucket.run({}))
+  })
 })
 
 function testConfigFrom (config) {

@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "pretest1": "npm run lint",
+    "node": "node",
     "test": "m.test",
+    "coverage": "node --require ./node_modules/m.test/global.js ./node_modules/istanbul/lib/cli.js cover --print detail test/**/*.test.js",
     "stack:create": "provisioning/create-stack",
     "stack:delete": "provisioning/delete-stack",
     "lint": "standard"
@@ -27,7 +29,8 @@
     "p-retry": "^1.0.0"
   },
   "devDependencies": {
-    "m.test": "0.0.54",
+    "istanbul": "^0.4.5",
+    "m.test": "0.0.56",
     "standard": "^9.0.2"
   },
   "standard": {

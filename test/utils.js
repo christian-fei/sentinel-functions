@@ -1,6 +1,11 @@
 exports.bucketExists = bucketExists
 exports.codeExists = codeExists
 exports.not = not
+exports.config = Object.assign({}, require('../config'), {
+  lambdaName: this.lambdaName + '-test',
+  bucketName: this.bucketName + '-test',
+  roleName: this.roleName + '-test'
+})
 
 const retry = require('p-retry')
 const AWS = require('aws-sdk')

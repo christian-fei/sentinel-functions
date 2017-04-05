@@ -1,10 +1,9 @@
 const {ok} = require('assert')
-const config = testConfigFrom(require('../../config'))
 const createBucket = require('../../lib/tasks/bucket/create')
 const deleteBucket = require('../../lib/tasks/bucket/delete')
 const createCode = require('../../lib/tasks/code/create')
 const deleteCode = require('../../lib/tasks/code/delete')
-const {codeExists} = require('../utils')
+const {codeExists, config} = require('../utils')
 
 test('code', () => {
   test.timeout('creates and deletes code', (done) => {
