@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
-const {run} = require('../lib/tasks/lambda/delete')
+const Lambda = require('../lib/lambda')
 const {lambdaName, bucketName} = require('../config')
 const {success, failure} = require('../lib/utils/command-logger')
 
-run({lambdaName, bucketName})
+Lambda.destroy({lambdaName, bucketName})
 .then(() => success(`-> successfully deleted lambda: "${lambdaName}"`))
 .catch(err => failure(`-> failed to delete lambda: "${lambdaName}"\n${err.message}`))

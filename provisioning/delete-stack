@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
-const {run} = require('../lib/tasks/stack/delete')
+const Stack = require('../lib/stack')
 const options = require('../config')
 const {success, failure} = require('../lib/utils/command-logger')
 
-run(options)
+Stack.destroy(options)
 .then(() => success(`-> successfully deleted stack`))
 .catch(err => failure(`-> failed to delete stack\n${err.message}`))

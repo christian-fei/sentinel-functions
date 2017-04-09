@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
-const {run} = require('../lib/tasks/bucket/delete')
+const Bucket = require('../lib/bucket')
 const {bucketName} = require('../config')
 const {success, failure} = require('../lib/utils/command-logger')
 
-run({bucketName})
+Bucket.destroy({bucketName})
 .then(() => success(`-> successfully deleted bucket: "${bucketName}"`))
 .catch(err => failure(`-> failed to delete bucket: "${bucketName}"\n${err.message}`))

@@ -7,7 +7,7 @@
     "pretest1": "npm run lint",
     "node": "node",
     "test": "m.test",
-    "coverage": "node --require ./node_modules/m.test/global.js ./node_modules/istanbul/lib/cli.js cover --print detail test/**/*.test.js",
+    "coverage": "find test | grep '/' | xargs node --require ./node_modules/m.test/global.js ./node_modules/istanbul/lib/cli.js cover --print detail",
     "stack:create": "provisioning/create-stack",
     "stack:delete": "provisioning/delete-stack",
     "lint": "standard"

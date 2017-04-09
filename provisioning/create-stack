@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
-const {run} = require('../lib/tasks/stack/create')
+const Stack = require('../lib/stack')
 const options = require('../config')
 const {success, failure} = require('../lib/utils/command-logger')
 
-run(options)
+Stack.create(options)
 .then(() => success(`-> successfully created stack!`))
 .catch((err) => failure(`-> failed to create stack\n${err.message}`))

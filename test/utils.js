@@ -1,20 +1,26 @@
 exports.bucketExists = bucketExists
 exports.codeExists = codeExists
+exports.lambdaExists = lambdaExists
+exports.roleExists = roleExists
 exports.not = not
+exports.loose = loose
+const config = require('../config')
 exports.config = Object.assign({}, require('../config'), {
-  lambdaName: this.lambdaName + '-test',
-  bucketName: this.bucketName + '-test',
-  roleName: this.roleName + '-test'
+  lambdaName: config.lambdaName + '-test',
+  bucketName: config.bucketName + '-test',
+  roleName: config.roleName + '-test'
 })
 
 const retry = require('p-retry')
 const AWS = require('aws-sdk')
 AWS.config.update({region: 'eu-west-1'})
-const {S3} = AWS
+const {S3, IAM, Lambda} = AWS
 const s3 = new S3({})
+const iam = new IAM({})
+const lambda = new Lambda({})
 
 function bucketExists (options) {
-  var params = {
+  const params = {
     Bucket: options.bucketName
   }
   return retry(() => s3.headBucket(params).promise(), {retries: 3})
@@ -23,7 +29,7 @@ function bucketExists (options) {
 }
 
 function codeExists (options) {
-  var params = {
+  const params = {
     Bucket: options.bucketName,
     Key: options.zipFileName
   }
@@ -32,6 +38,29 @@ function codeExists (options) {
   .catch(() => false)
 }
 
+function lambdaExists (options) {
+  const params = {
+    FunctionName: options.lambdaName,
+    Qualifier: '1'
+  }
+  return retry(() => lambda.getFunctionConfiguration(params).promise(), {retries: 3})
+  .then(() => true)
+  .catch(() => false)
+}
+
+function roleExists (options) {
+  const params = {
+    RoleName: options.roleName
+  }
+  return retry(() => iam.getRole(params).promise(), {retries: 3})
+  .then(() => true)
+  .catch(() => false)
+}
+
 function not (promise) {
   return () => promise.then(bool => !bool)
+}
+
+function loose (promise) {
+  return promise.then((...args) => Promise.resolve(...args)).catch(() => {})
 }

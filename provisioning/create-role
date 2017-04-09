@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 
-const {run} = require('../lib/tasks/role/create')
+const Role = require('../lib/role')
 const {roleName} = require('../config')
 const {success, failure} = require('../lib/utils/command-logger')
 
-run({roleName})
+Role.create({roleName})
 .then(data => {
   success(`-> successfully created role: "${roleName}"`)
   success(`-> arn: \n\t${data.Role.Arn}`)

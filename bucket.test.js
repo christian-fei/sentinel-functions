@@ -1,10 +1,10 @@
 const {ok, throws} = require('assert')
-const Bucket = require('../../lib/bucket')
-const {bucketExists, not, config} = require('../utils')
+const Bucket = require('../lib/bucket')
+const {bucketExists, not, config, loose} = require('./utils')
 
 test('bucket', () => {
   test.timeout('creates and deletes bucket', (done) => {
-    Bucket.destroy(config).then(() => {}).catch(() => {})
+    loose(Bucket.destroy(config))
     .then(() => Bucket.create(config))
     .then(() => bucketExists(config))
     .then(exists => ok(exists))

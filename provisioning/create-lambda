@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
-const {run} = require('../lib/tasks/lambda/create')
+const Lambda = require('../lib/lambda')
 const {lambdaName, bucketName, roleName} = require('../config')
 const {success, failure} = require('../lib/utils/command-logger')
 
-run({lambdaName, bucketName, roleName})
+Lambda.create({lambdaName, bucketName, roleName})
 .then(() => success(`-> successfully created lambda: "${lambdaName}"`))
 .catch(err => failure(`-> failed to create lambda: "${lambdaName}"\n${err.message}`))
