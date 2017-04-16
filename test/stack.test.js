@@ -1,6 +1,7 @@
 const {ok, throws} = require('assert')
 const Stack = require('../lib/stack')
-const {bucketExists, codeExists, lambdaExists, not, config, loose} = require('./utils')
+const {logP} = require('../lib/utils/logger')
+const {bucketExists, codeExists, lambdaExists, roleExists, not, config, loose} = require('./utils')
 const delay = require('delay')
 
 test('stack', () => {
@@ -13,19 +14,30 @@ test('stack', () => {
     .then(exists => ok(exists))
     .then(() => not(lambdaExists(config)))
     .then(exists => ok(exists))
-    .then(delay(3000))
-
+    .then(() => not(roleExists(config)))
+    .then(exists => ok(exists))
     .then(() => Stack.create(config))
+    .then(delay(5000))
+    .then(logP('-> bucket exists'))
     .then(() => bucketExists(config))
+    .then(exists => ok(exists))
+    .then(logP('-> code exists'))
+    .then(() => codeExists(config))
+    .then(exists => ok(exists))
+    .then(logP('-> lambda exists'))
+    .then(() => lambdaExists(config))
+    .then(exists => ok(exists))
+    .then(logP('-> role exists'))
+    .then(() => roleExists(config))
     .then(exists => ok(exists))
     .then(() => done())
     .catch(done)
-  }, 30000)
+  }, 90000)
 
-  test('Stack.create throws when bucketName is missing', () => {
+  test('Stack.create throws when options are missing', () => {
     throws(() => Stack.create({}))
   })
-  test('Stack.destroy throws when bucketName is missing', () => {
+  test('Stack.destroy throws when options are missing', () => {
     throws(() => Stack.destroy({}))
   })
 })

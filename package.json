@@ -31,7 +31,7 @@
   "devDependencies": {
     "istanbul": "^0.4.5",
     "m.test": "0.0.56",
-    "standard": "^9.0.2"
+    "standard": "^10.0.1"
   },
   "standard": {
     "globals": [
