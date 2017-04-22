@@ -2,3 +2,5 @@ node_modules/
 coverage/
 stack.json
 stack-test.json
+sentinel-functions-1.0.0.tgz
+sentinel/sentinel.zip

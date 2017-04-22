@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 const Role = require('../lib/role')
-const roleName = require('../config')
+const {roleName} = require('../config')
 const {success, failure} = require('../lib/utils/command-logger')
 
 Role.destroy({roleName})

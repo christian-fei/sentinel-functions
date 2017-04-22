@@ -16,7 +16,6 @@ test('lambda', () => {
     .then(() => loose(Code.upload(config)))
     .then(() => loose(Role.create(config)))
     .then((data) => {
-      console.log(data)
       const arn = data.Role.Arn
       return Lambda.create(Object.assign(config, {roleArn: arn}))
     })

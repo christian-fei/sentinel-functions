@@ -1,10 +1,10 @@
 {
   "name": "sentinel-functions",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "> functions used by [sentinel-dashboard](https://github.com/christian-fei/sentinel-dashboard)",
   "main": "index.js",
   "scripts": {
-    "pretest1": "npm run lint",
+    "pretest": "npm run lint",
     "node": "node",
     "test": "m.test",
     "coverage": "find test | grep '/' | xargs node --require ./node_modules/m.test/global.js ./node_modules/istanbul/lib/cli.js cover --print detail",
@@ -25,7 +25,8 @@
   "homepage": "https://github.com/christian-fei/sentinel-functions#readme",
   "dependencies": {
     "aws-sdk": "^2.36.0",
-    "delay": "^2.0.0"
+    "delay": "^2.0.0",
+    "p-retry": "^1.0.0"
   },
   "devDependencies": {
     "istanbul": "^0.4.5",
