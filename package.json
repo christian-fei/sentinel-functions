@@ -1,6 +1,6 @@
 {
   "name": "sentinel-functions",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "> functions used by [sentinel-dashboard](https://github.com/christian-fei/sentinel-dashboard)",
   "main": "index.js",
   "scripts": {

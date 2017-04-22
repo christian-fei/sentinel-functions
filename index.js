@@ -1,1 +1,1 @@
-module.exports = require('./lib/stack')
+module.exports = require('./lib')
