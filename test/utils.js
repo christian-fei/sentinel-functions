@@ -2,25 +2,28 @@ exports.bucketExists = bucketExists
 exports.codeExists = codeExists
 exports.lambdaExists = lambdaExists
 exports.roleExists = roleExists
+exports.ruleExists = ruleExists
 exports.not = not
 exports.loose = loose
 const config = require('../config')
 exports.config = Object.assign({}, config, {
   lambdaName: config.lambdaName + '-test',
   bucketName: config.bucketName + '-test',
-  roleName: config.roleName + '-test'
+  roleName: config.roleName + '-test',
+  ruleName: config.ruleName + '-test'
 })
 
 const retry = require('p-retry')
 const AWS = require('aws-sdk')
 AWS.config.update({region: 'eu-west-1'})
-const {S3, IAM, Lambda} = AWS
+const {S3, IAM, Lambda, CloudWatchEvents} = AWS
 const s3 = new S3({})
 const iam = new IAM({})
 const lambda = new Lambda({})
+const cloudWatchEvents = new CloudWatchEvents()
 
 function p (cb) {
-  return retry(cb, {retries: 5})
+  return retry(cb, {retries: 3})
 }
 
 function bucketExists (options) {
@@ -56,6 +59,15 @@ function roleExists (options) {
     RoleName: options.roleName
   }
   return p(() => iam.getRole(params).promise())
+  .then(() => true)
+  .catch(() => false)
+}
+
+function ruleExists (options) {
+  const params = {
+    Name: options.ruleName
+  }
+  return p(() => cloudWatchEvents.describeRule(params).promise())
   .then(() => true)
   .catch(() => false)
 }

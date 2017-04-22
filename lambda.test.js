@@ -13,7 +13,7 @@ test('lambda', () => {
     .then(() => loose(Code.destroy(config)))
     .then(() => loose(Bucket.destroy(config)))
     .then(() => loose(Bucket.create(config)))
-    .then(() => loose(Code.create(config)))
+    .then(() => loose(Code.upload(config)))
     .then(() => loose(Role.create(config)))
     .then((data) => {
       console.log(data)

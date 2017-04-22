@@ -7,7 +7,7 @@ test('code', () => {
   test.timeout('creates and deletes code', (done) => {
     loose(Bucket.destroy(config))
     .then(() => Bucket.create(config))
-    .then(() => Code.create(config))
+    .then(() => Code.upload(config))
     .then(() => codeExists(config))
     .then(exists => ok(exists))
     .then(() => Code.destroy(config))

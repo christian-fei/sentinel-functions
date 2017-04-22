@@ -3,9 +3,19 @@
 > functions used by [sentinel-dashboard](https://github.com/christian-fei/sentinel-dashboard)
 
 
-# Installation
+# Requirements
 
-Configure the `bucketName` in `config.js` and run:
+- [Configured](http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html) aws-cli
+- Node 7+ *(tested with 7.9.0)*
+
+
+# Setup
+
+1. `git clone git@github.com:christian-fei/sentinel-functions.git`
+2. Open `config.js` and change the `bucketName`
+
+
+# Installation
 
 ```
 npm run stack:create
