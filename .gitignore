@@ -1,2 +1,4 @@
 node_modules/
 coverage/
+stack.json
+stack-test.json
