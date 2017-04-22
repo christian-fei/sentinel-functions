@@ -1,4 +1,7 @@
 const fetch = require('node-fetch')
+const {Lambda} = require('aws-sdk')
+const awsLambda = new Lambda({})
+
 module.exports = function lambda (event, context, callback) {
   console.log('-- event', event)
   console.log('-- context', context)
@@ -12,8 +15,20 @@ module.exports = function lambda (event, context, callback) {
       statusCode,
       responseTime
     }
-    console.log(metrics)
-    callback(null, metrics)
+
+    console.log('preparing metrics', metrics)
+
+    var params = {
+      FunctionName: 'sentinel-worker',
+      Payload: JSON.stringify(metrics)
+    }
+    awsLambda.invoke(params)
+    .then(() => {
+      callback(null, metrics)
+    })
+    .catch((err) => {
+      callback(err)
+    })
   })
   .catch(callback)
 }
