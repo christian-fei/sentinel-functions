@@ -22,7 +22,7 @@ module.exports = function lambda (event, context, callback) {
       FunctionName: 'sentinel-worker',
       Payload: JSON.stringify(metrics)
     }
-    awsLambda.invoke(params)
+    awsLambda.invoke(params).promise()
     .then(() => {
       callback(null, metrics)
     })
